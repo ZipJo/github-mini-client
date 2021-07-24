@@ -1,0 +1,15 @@
+.gmc-DateRangeSelect > div,
+.gmc-DateRangeSelect .react-datepicker__input-container {
+    height: 100%;
+}
+
+.gmc-DateRangeSelect .react-datepicker__close-icon:after {
+    display: inline;
+	vertical-align: baseline;
+    background-color: transparent;
+	color: rgba(209, 213, 219, var(--tw-border-opacity));
+    font-size: 1.5rem;
+}
+.gmc-DateRangeSelect .react-datepicker__close-icon:after:hover {
+    color: rgba(156, 163, 175, var(--tw-border-opacity));
+}

@@ -21,6 +21,7 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "max-len": "off",
         "react/react-in-jsx-scope": "off",
         "react/require-default-props": "off",
         "indent": ["error", 4],
