@@ -21,6 +21,11 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/require-default-props": "off",
+        "indent": ["error", 4],
+        "react/jsx-indent": ["warn", 4],
+        "react/jsx-indent-props": ["warn", 4],
         "import/no-extraneous-dependencies": "off",
         "global-require": "off",
         "no-use-before-define": "off",
