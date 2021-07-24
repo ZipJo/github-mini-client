@@ -22,8 +22,8 @@ The API does not provide a "trending" endpoint, I'll construct one myself, based
 
 ## Rough timeline
 1. Rough plan and writing the readme (This is _NOW_ 😋)
-1. NPM and Git
-2. Getting first results / get to know the GitHub API
-3. Wireframe
-4. Components, tests and docs
-5. Refinement and optional features (_'Stuff I'd consider useful'_)
+2. NPM and Git
+3. Getting first results / get to know the GitHub API
+4. Wireframe
+5. Components, tests and docs
+6. Refinement and optional features (_'Stuff I'd consider useful'_)

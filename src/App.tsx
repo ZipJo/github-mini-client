@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import getRepositories from './services/get-repositories.service';
+
 import './App.css';
 
 function App(): JSX.Element {
+  useEffect(() => {
+    getRepositories()
+      .then((result) => console.log('result', result))
+      .catch((error) => console.log('error', error));
+  }, []);
   return (
     <div className="App">
       <header className="App-header">
