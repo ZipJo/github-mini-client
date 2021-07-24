@@ -27,3 +27,7 @@ The API does not provide a "trending" endpoint, I'll construct one myself, based
 4. Wireframe
 5. Components, tests and docs
 6. Refinement and optional features (_'Stuff I'd consider useful'_)
+
+## Wireframe
+rough sketch of what I want the thing to look like:
+![Image of the Wireframe](./wireframe.png)
