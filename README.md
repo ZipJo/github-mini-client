@@ -12,13 +12,13 @@ The API does not provide a "trending" endpoint, I'll construct one myself, based
 - Basic sorting, by name, language author and stars (total/in the timeframe)
 - Customizing the timeframe
 - A basic "Hide" function for each repo
+- A darkmode/lightmode switch
 
 ## Tech I wanna use
 - React & Typescript
-- SuitCss utility-classes and naming conventions
+- Tailwind for rapid layouting
 - eslint
 - axios
-- jest
 
 ## Rough timeline
 1. Rough plan and writing the readme (This is _NOW_ 😋)
