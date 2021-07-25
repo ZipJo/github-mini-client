@@ -3,6 +3,10 @@
     height: 100%;
 }
 
+.gmc-DateRangeSelect .react-datepicker__close-icon {
+    right: .5rem;
+}
+
 .gmc-DateRangeSelect .react-datepicker__close-icon:after {
     display: inline;
 	vertical-align: baseline;

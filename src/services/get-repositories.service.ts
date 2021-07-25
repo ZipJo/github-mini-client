@@ -34,15 +34,29 @@ export default async function getRepositories(args?: getRepositoriesType): Promi
 
     const languageQuery = languages?.reduce((query, language) => combineQuery(query, `language:${language}`), '') || '';
 
-    const fullQuery = combineQuery(createdQuery, languageQuery);
+    // we have to query at least one thing, so I'll add a fixed minimum amount of stars of 1
+    const starsQuery = 'stars:>=50';
+
+    const fullQuery = combineQuery(createdQuery, languageQuery, starsQuery);
 
     const encoded = {
         q: encodeURIComponent(fullQuery),
         page: encodeURIComponent(page),
         sort: encodeURIComponent(sort),
     };
-    const queryString = `?q=${encoded.q}&page=${encoded.page}&sort=${encoded.sort}`;
-    const requestUrl = GITHUB_QUERY_URL + queryString;
-    console.log('requestUrl', requestUrl);
+    const queries = {
+        q: encoded.q ? `q=${encoded.q}` : '',
+        page: encoded.page ? `page=${encoded.page}` : '',
+        sort: encoded.sort ? `sort=${encoded.sort}` : '',
+    };
+    const queryString = () => {
+        const values = Object.values(queries);
+        if (values.some(Boolean)) {
+            return `?${values.filter(Boolean).join('&')}`;
+        }
+        return '';
+    };
+    const requestUrl = GITHUB_QUERY_URL + queryString();
+
     return axios.get(requestUrl);
 }

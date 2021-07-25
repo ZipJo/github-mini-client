@@ -3,12 +3,12 @@ import DatePicker from 'react-datepicker';
 
 import './date-range-select.component.css';
 import 'react-datepicker/dist/react-datepicker.css';
-import { dateRangeType } from './date-range-select.types';
+import { DateRangeType } from './date-range-select.types';
 
 interface DateRangeSelectProps {
     className?: string;
-    dateRange: dateRangeType;
-    setDateRange: React.Dispatch<React.SetStateAction<dateRangeType>>;
+    dateRange: DateRangeType;
+    setDateRange: React.Dispatch<React.SetStateAction<DateRangeType>>;
 }
 
 export default function DateRangeSelect(props: DateRangeSelectProps): JSX.Element {
@@ -23,14 +23,14 @@ export default function DateRangeSelect(props: DateRangeSelectProps): JSX.Elemen
             <DatePicker
                 isClearable
                 wrapperClassName="h-full"
-                className={clsx(className, 'h-full pl-2')}
+                className={clsx(className, 'h-full px-2')}
                 selectsRange
                 startDate={startDate}
                 placeholderText="select a date range"
                 endDate={endDate}
                 onChange={(update) => {
                 // DatePicker is not 100% Typesafe, so I'm sanitizing the callback parameter a bit
-                    const updateSanitizer: dateRangeType = Array.isArray(update) ? update : [null, null];
+                    const updateSanitizer: DateRangeType = Array.isArray(update) ? update : [null, null];
                     setDateRange(updateSanitizer);
                 }}
             />

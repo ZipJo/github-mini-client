@@ -1,17 +1,43 @@
 import { useEffect, useState } from 'react';
 import { RepositoriesContextValue, RepositoryType } from '../context/repositories-context.types';
 import getRepositories from '../services/get-repositories.service';
-import { RawGitHubData } from '../services/get-repositories.types';
 
 export default function useRepositoriesSystem(): RepositoriesContextValue {
     const [loading, setLoading] = useState(true);
     const [repositories, setRepositories] = useState<RepositoryType[]>([]);
     const [errorMessage, setErrorMessage] = useState('');
-    const updateRepositories = (data?: RawGitHubData): void => {
-        console.log('data', data);
-        const repos = data?.items.map((item) => ({ name: item.full_name, starred: false })) || [];
-        setRepositories(repos);
+    const [starredRepositories, setStarredRepositories] = useState<RepositoryType[]>([]);
+
+    const updateRepositories: RepositoriesContextValue['updateRepositories'] = (data, append) => {
+        const repos = data?.items.map((item) => ({
+            id: item.id,
+            name: item.full_name,
+            starred: starredRepositories.some((starredRepository) => starredRepository.id === item.id),
+            language: item.language,
+            stars: item.stargazers_count,
+        })) || [];
+        if (append) setRepositories(repositories.concat(repos));
+        else setRepositories(repos);
     };
+
+    const star: RepositoriesContextValue['star'] = (id) => {
+        const index = repositories.findIndex((repo) => (repo.id === id));
+        if (index >= 0) {
+            const shallowRepoCopy = [...repositories];
+            const { starred } = repositories[index];
+            shallowRepoCopy[index].starred = !starred;
+            if (!starred) {
+                setStarredRepositories([...starredRepositories, shallowRepoCopy[index]]);
+            } else {
+                setStarredRepositories(starredRepositories.filter((starredRepository) => starredRepository.id !== shallowRepoCopy[index].id));
+            }
+            setRepositories(shallowRepoCopy);
+        } else {
+            // this has to have been toggled from within starredRepositories - remove it
+            setStarredRepositories(starredRepositories.filter((starredRepository) => starredRepository.id !== id));
+        }
+    };
+
     useEffect(() => {
         setLoading(true);
         getRepositories()
@@ -26,10 +52,12 @@ export default function useRepositoriesSystem(): RepositoriesContextValue {
     }, []);
 
     return {
+        star,
         loading,
         setLoading,
         errorMessage,
         setErrorMessage,
+        starredRepositories,
         repositories,
         updateRepositories,
     };
