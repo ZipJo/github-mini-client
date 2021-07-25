@@ -22,7 +22,7 @@ export default function RepositoriesDisplay(props: RepositoriesDisplayProps): JS
                 .filter((repository) => (textFilter ? repository.name.includes(textFilter) : true))
                 .map((repository) => (
                     <RepositoryCard
-                        key={repository.id}
+                        key={`repo_${repository.id}`}
                         repository={repository}
                     />
                 ))}

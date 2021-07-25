@@ -13,7 +13,7 @@ function App(): JSX.Element {
             </header>
             <RepositoriesContext.Provider value={repositoriesProviderValue}>
                 <RepositoryFinder className="m-6" />
-                <footer className="fixed bottom-0 right-0 p-4">
+                <footer>
                     <StarredRepositoriesFAB />
                 </footer>
             </RepositoriesContext.Provider>
