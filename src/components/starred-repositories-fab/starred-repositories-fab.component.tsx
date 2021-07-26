@@ -1,8 +1,9 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { StarIcon } from '@heroicons/react/solid';
 import RepositoriesContext from '../../context/repositories.context';
 import RepositoryCard from '../repository-card/repository-card.component';
+import './starred-repositories-fab.component.css';
 
 interface StarredRepositoriesFABProps {
     /** className of the Button */
@@ -17,15 +18,23 @@ export default function StarredRepositoriesFAB(props: StarredRepositoriesFABProp
     const {
         starredRepositories,
     } = useContext(RepositoriesContext);
-    const [renderStarred, setRenderStarred] = useState(false);
+    const [renderStarred, setRenderStarred] = useState<boolean>();
 
-    if (!starredRepositories.length) return <></>;
+    useEffect(() => {
+        if (!starredRepositories.length) setRenderStarred(false);
+    }, [starredRepositories.length]);
+
     return (
         <>
             <button
                 type="button"
                 onClick={() => setRenderStarred(!renderStarred)}
-                className={clsx(className, 'w-11 h-11 flex justify-center items-center bg-purple-500 rounded-full fixed bottom-0 right-0 m-4')}
+                className={clsx(
+                    className,
+                    'gmc-StarredRepositoriesFAB-button',
+                    starredRepositories.length ? 'is-animatedIn' : 'is-animatedOut',
+                    'w-11 h-11 flex justify-center items-center bg-purple-500 rounded-full fixed bottom-0 right-0 m-4',
+                )}
             >
                 <StarIcon className="w-6 h-6 flex-none text-white" />
             </button>
