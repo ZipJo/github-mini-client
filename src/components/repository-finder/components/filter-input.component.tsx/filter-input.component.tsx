@@ -1,11 +1,17 @@
 import { XIcon } from '@heroicons/react/solid';
 
 interface FilterInputProps {
+    /** className of the search fields' container */
     className?: string;
+
+    /** value of the search field */
     textFilter: string;
+
+    /** setter of the search fields' value */
     setTextFilter: React.Dispatch<React.SetStateAction<string>>;
 }
 
+/** controlled search-field component (input and a clear button) */
 export default function FilterInput(props: FilterInputProps): JSX.Element {
     const {
         className,

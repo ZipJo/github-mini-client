@@ -12,9 +12,14 @@ import { LanguageType } from './components/language-select/language-select.types
 import RepositoriesDisplay from './components/repositories-display/repositories-display.component';
 
 interface RepositoryFinderProps {
+    /** this sections className */
     className?: string;
 }
 
+/**
+ * Renders the "Repository Finder" component, to search and display all repositories, that match the given filters.
+ * All inputs are controlled components and have their respective stateVars attached to them.
+*/
 export default function RepositoryFinder(props: RepositoryFinderProps): JSX.Element {
     const {
         className,
@@ -28,6 +33,7 @@ export default function RepositoryFinder(props: RepositoryFinderProps): JSX.Elem
         loading, setLoading, updateRepositories, setErrorMessage,
     } = useContext(RepositoriesContext);
 
+    /** fires the getRepositories service and updates the state accordingly */
     const loadFilteredRepositories = (page?: number) => {
         const [startDate, endDate] = dateRange;
         setLoading(true);
@@ -39,6 +45,7 @@ export default function RepositoryFinder(props: RepositoryFinderProps): JSX.Elem
         })
             .then((result) => {
                 if (page) setPagesLoaded(page);
+                else setPagesLoaded(1);
                 updateRepositories(result.data, Boolean(page));
                 setLoading(false);
             })

@@ -6,10 +6,14 @@ import { RepositoryType } from '../../context/repositories-context.types';
 import RepositoriesContext from '../../context/repositories.context';
 
 interface RepositoryCardProps {
+    /** className of the card */
     className?: string;
+
+    /** repository to be displayed in the card */
     repository: RepositoryType;
 }
 
+/** component, to display a given repositories' information in a card */
 export default function RepositoryCard(props: RepositoryCardProps): ReactElement {
     const {
         className,

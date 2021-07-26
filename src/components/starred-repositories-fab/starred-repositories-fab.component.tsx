@@ -1,13 +1,15 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import clsx from 'clsx';
 import { StarIcon } from '@heroicons/react/solid';
 import RepositoriesContext from '../../context/repositories.context';
 import RepositoryCard from '../repository-card/repository-card.component';
 
 interface StarredRepositoriesFABProps {
+    /** className of the Button */
     className?: string;
 }
 
+/** renders a small floating action button, that toggles a popout component with all currently starred repositories */
 export default function StarredRepositoriesFAB(props: StarredRepositoriesFABProps): JSX.Element {
     const {
         className,

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { RepositoriesContextValue, RepositoryType } from '../context/repositories-context.types';
 import getRepositories from '../services/get-repositories.service';
 
+/** hook, to fill the context with usable values and methods. see the return-type docs, for more information */
 export default function useRepositoriesSystem(): RepositoriesContextValue {
     const [loading, setLoading] = useState(true);
     const [repositories, setRepositories] = useState<RepositoryType[]>([]);

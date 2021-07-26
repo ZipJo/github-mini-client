@@ -6,11 +6,17 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { DateRangeType } from './date-range-select.types';
 
 interface DateRangeSelectProps {
+    /** the _datepickers'_ className */
     className?: string;
+
+    /** date range, to be passed in (array of startDate, endDate) */
     dateRange: DateRangeType;
+
+    /** setter of the date range */
     setDateRange: React.Dispatch<React.SetStateAction<DateRangeType>>;
 }
 
+/** controlled daterange selector, based on react-datepicker */
 export default function DateRangeSelect(props: DateRangeSelectProps): JSX.Element {
     const {
         className,

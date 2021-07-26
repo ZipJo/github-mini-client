@@ -8,13 +8,25 @@ import combineQuery from './helpers/combine-query.helper';
 const GITHUB_QUERY_URL = 'https://api.github.com/search/repositories';
 
 type getRepositoriesType = {
+    /** pagenumber to be fetched. Github defaults to 30 entries per Query, if we want more, we have to load them consecutively */
     page?: number;
+
+    /** 'sort by X, descending - same as on Githubs "trending" page */
     sort?: 'stars'|'forks'|'help-wanted-issues'|'updated'|'best match';
+
+    /** start date, to be searched from - when the value is _null_, it'll search as far back as possible */
     dateFrom?: Date | null;
+
+    /** end date, to be searched to - when the value is _null_, it'll search until today */
     dateTo?: Date | null;
+
+    /** query any number of programming languages */
     languages?: string[];
 }
-
+/**
+ * This function returns an axios Promise, from a get request to GitHubs public repo-Query URL.
+ * all arguments are optional, it will default to "All repositories created last week, sorted by stars"
+ */
 export default async function getRepositories(args?: getRepositoriesType): Promise<AxiosResponse> {
     const {
         page = 1,
@@ -34,8 +46,8 @@ export default async function getRepositories(args?: getRepositoriesType): Promi
 
     const languageQuery = languages?.reduce((query, language) => combineQuery(query, `language:${language}`), '') || '';
 
-    // we have to query at least one thing, so I'll add a fixed minimum amount of stars of 1
-    const starsQuery = 'stars:>=50';
+    // we have to query at least one thing, so I'll add a fixed minimum amount of stars of 20
+    const starsQuery = 'stars:>=20';
 
     const fullQuery = combineQuery(createdQuery, languageQuery, starsQuery);
 

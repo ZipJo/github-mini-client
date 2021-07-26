@@ -7,6 +7,7 @@ interface RepositoriesDisplayProps {
     textFilter?: string;
 }
 
+/** The main Display component. Iterates through all repositories and displays them, also takes care of the real-time filter */
 export default function RepositoriesDisplay(props: RepositoriesDisplayProps): JSX.Element {
     const {
         className,

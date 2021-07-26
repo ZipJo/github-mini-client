@@ -1,3 +1,5 @@
+/** There's no endpoint for this, so I copied a JSON I found on GitHub */
+
 import { LanguageType } from './language-select.types';
 
 // eslint-disable-next-line import/prefer-default-export

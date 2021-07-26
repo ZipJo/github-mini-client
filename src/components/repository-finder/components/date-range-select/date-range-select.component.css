@@ -1,3 +1,6 @@
+/* the className props of the react-datepicker are not enough, to properly style from outside, so I'll resort to using normal css rules */
+/* fixing the height and exchanging the clear-button */
+
 .gmc-DateRangeSelect > div,
 .gmc-DateRangeSelect .react-datepicker__input-container {
     height: 100%;

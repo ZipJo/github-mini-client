@@ -1,17 +1,38 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+/** type to describe any given object inside the items[]-array from a repository-query */
 export type RawGitHubRepository = {
+    /** githubs UID */
     'id': number;
+
+    /** name of the repo */
     'name': string;
+
+    /** path and name of the repo */
     'full_name': string;
+
+    /** amount of stars */
     'stargazers_count': number;
+
+    /** programming language in a human-readable format */
     'language': string;
+
+    /** link to the repo on github */
     'url': string;
+
+    /** ...rest  */
     [key: string]: any;
 }
 
+/** returned data object from a repository query */
 export interface RawGitHubData {
+    /** number of total results, disregarding pagination */
     'total_count': number;
+
+    /** I don't know... Githubs Object-Docs a scarce and far between */
     'incomplete_results': boolean;
+
+    /** Array of repositories in this Data - maxes out at a default of 30 items, use pagination, to get more */
     'items': RawGitHubRepository[];
 }
 
