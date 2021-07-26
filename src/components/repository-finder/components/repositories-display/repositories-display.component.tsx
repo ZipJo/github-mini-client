@@ -1,9 +1,13 @@
+import clsx from 'clsx';
 import { useContext } from 'react';
 import RepositoriesContext from '../../../../context/repositories.context';
 import RepositoryCard from '../../../repository-card/repository-card.component';
 
 interface RepositoriesDisplayProps {
+    /** className of the cards' container */
     className?: string;
+
+    /** text based filter to filter for a repositories name  */
     textFilter?: string;
 }
 
@@ -18,11 +22,12 @@ export default function RepositoriesDisplay(props: RepositoriesDisplayProps): JS
     } = useContext(RepositoriesContext);
 
     return (
-        <div className={className}>
+        <div className={clsx(className, 'flex flex-wrap justify-center')}>
             {repositories
                 .filter((repository) => (textFilter ? repository.name.includes(textFilter) : true))
                 .map((repository) => (
                     <RepositoryCard
+                        className="m-2 flex-auto"
                         key={`repo_${repository.id}`}
                         repository={repository}
                     />

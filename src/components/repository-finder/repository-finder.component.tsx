@@ -83,10 +83,11 @@ export default function RepositoryFinder(props: RepositoryFinderProps): JSX.Elem
                 </button>
             </div>
             <RepositoriesDisplay
+                className="my-2"
                 textFilter={textFilter}
             />
             <button
-                className="text-blue-600 hover:underline disabled:text-gray-500 disabled:pointer-events-none"
+                className="text-blue-700 hover:underline disabled:text-gray-500 disabled:pointer-events-none"
                 type="button"
                 disabled={loading}
                 onClick={loadMoreRepositories}

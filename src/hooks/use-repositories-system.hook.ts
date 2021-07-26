@@ -9,13 +9,20 @@ export default function useRepositoriesSystem(): RepositoriesContextValue {
     const [errorMessage, setErrorMessage] = useState('');
     const [starredRepositories, setStarredRepositories] = useState<RepositoryType[]>([]);
 
+    /** map data and local repo object */
     const updateRepositories: RepositoriesContextValue['updateRepositories'] = (data, append) => {
-        const repos = data?.items.map((item) => ({
+        const repos: RepositoryType[] = data?.items.map((item) => ({
             id: item.id,
-            name: item.full_name,
+            name: item.name,
             starred: starredRepositories.some((starredRepository) => starredRepository.id === item.id),
             language: item.language,
             stars: item.stargazers_count,
+            link: item.url,
+            author: item.owner.login,
+            authorUrl: item.owner.url,
+            createdAt: item.created_at,
+            forks: item.forks,
+            watchers: item.watchers_count,
         })) || [];
         if (append) setRepositories(repositories.concat(repos));
         else setRepositories(repos);

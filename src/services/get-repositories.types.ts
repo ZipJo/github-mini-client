@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+/** there's no proper GitHub API typedoc, I'm writing my own... */
+
 /** type to describe any given object inside the items[]-array from a repository-query */
 export type RawGitHubRepository = {
     /** githubs UID */
@@ -19,6 +21,27 @@ export type RawGitHubRepository = {
 
     /** link to the repo on github */
     'url': string;
+
+    /** created at: date and time string (UTC)  */
+    'created_at': string;
+
+    /** number of forks */
+    'forks': number;
+
+    /** number of watchers */
+    'watchers_count': number;
+
+    /** author-object */
+    'owner': {
+        /** username */
+        'login': string;
+
+        /** link to profile */
+        'url': string;
+
+        /** ...rest  */
+        [key: string]: any;
+    }
 
     /** ...rest  */
     [key: string]: any;

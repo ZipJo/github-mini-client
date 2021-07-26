@@ -30,9 +30,10 @@ export default function StarredRepositoriesFAB(props: StarredRepositoriesFABProp
                 <StarIcon className="w-6 h-6 flex-none text-white" />
             </button>
             {renderStarred && (
-                <div className="w-80 fixed right-20 bottom-4">
+                <div className="fixed right-20 bottom-4 max-h-full w-96 bg-purple-300 shadow-lg rounded">
                     {starredRepositories.map((starredRepository) => (
                         <RepositoryCard
+                            className="m-3 bg-white"
                             key={`starredRepo_${starredRepository.id}`}
                             repository={starredRepository}
                         />

@@ -13,7 +13,25 @@ export type RepositoryType = {
     /** programming language used */
     language: string;
 
-    /** amount of stars this repo has recieved */
+    /** link to the repo */
+    link: string;
+
+    /** name of the author */
+    author: string;
+
+    /** link to the author's GitHub */
+    authorUrl: string;
+
+    /** when the repo was created */
+    createdAt: string;
+
+    /** amount of forks */
+    forks: number;
+
+    /** amount of watchers */
+    watchers: number;
+
+    /** amount of stars */
     stars: number;
 }
 
