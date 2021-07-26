@@ -11,7 +11,7 @@ export type RepositoryType = {
     starred: boolean;
 
     /** programming language used */
-    language: string;
+    language?: string;
 
     /** link to the repo */
     link: string;
