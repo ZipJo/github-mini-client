@@ -31,3 +31,24 @@ The API does not provide a "trending" endpoint, I'll construct one myself, based
 ## Wireframe
 rough sketch of what I want the thing to look like:
 ![Image of the Wireframe](./wireframe.png)
+
+## Afterthoughts & mini-retro
+_good enough for v1, let's see, whats still to do_
+
+What a nice little task! As is kind of usual, I took a lot more time, than originally planned. this is mostly due to three things:
+1. There's always something to improve and expand upon (see below) and I just can't stop myself sometimes
+2. My wireframing may have been a tiny bit too ambitious
+3. I've never worked with Tailwind before. Now I have - it's amazing!
+
+### Thinks to note for version 2:
+- actually display the errormessage on axios reject
+- make the filters into a form and bind the search method to the submit event
+- more nice animations
+- maybe a small tooltip for more author-informations
+- ability to search for "no language" in the languages
+- add predefined timeframes to search for
+- save the state in localstorage
+- export saved repos (maybe as JSON, idk)
+- remove the few CRA leftovers (./public)
+- add a 'sort-by'
+- ...
